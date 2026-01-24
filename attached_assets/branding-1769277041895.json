@@ -1,0 +1,103 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    {
+      "family": "sans-serif",
+      "count": 59
+    },
+    {
+      "family": "DM Sans",
+      "count": 52
+    },
+    {
+      "family": "DM Sans Placeholder",
+      "count": 52
+    },
+    {
+      "family": "Inter",
+      "count": 1
+    },
+    {
+      "family": "Inter Placeholder",
+      "count": 1
+    }
+  ],
+  "colors": {
+    "primary": "#0000EE",
+    "accent": "#0000EE",
+    "background": "#141414",
+    "textPrimary": "#141414",
+    "link": "#0000EE"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "sans-serif",
+      "heading": "DM Sans"
+    },
+    "fontStacks": {
+      "body": [
+        "sans-serif"
+      ],
+      "heading": [
+        "DM Sans",
+        "DM Sans Placeholder",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "DM Sans",
+        "DM Sans Placeholder",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "56px",
+      "h2": "40px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "input": {
+      "background": "#262626",
+      "textColor": "#F9F9F9",
+      "borderColor": null,
+      "borderRadius": "32px",
+      "borderRadiusCorners": {
+        "topLeft": "32px",
+        "topRight": "32px",
+        "bottomRight": "32px",
+        "bottomLeft": "32px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": null,
+    "favicon": "File saved at: attached_assets/favicon.png",
+    "ogImage": null
+  },
+  "__framework_hints": [
+    "Framer 461de17"
+  ],
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "LLM failed"
+    },
+    "secondary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "LLM failed"
+    },
+    "confidence": 0
+  },
+  "confidence": {
+    "buttons": 0,
+    "colors": 0,
+    "overall": 0
+  }
+}
