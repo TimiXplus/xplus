@@ -12,6 +12,16 @@ if (!process.env.DATABASE_URL) {
     "DATABASE_URL must be set for DatabaseStorage. Falling back to in-memory storage.",
   );
 } else {
-  pool = new Pool({ connectionString: process.env.DATABASE_URL });
-  db = drizzle(pool, { schema });
+  try {
+    pool = new Pool({
+      connectionString: process.env.DATABASE_URL,
+      connectionTimeoutMillis: 5000
+    });
+    db = drizzle(pool, { schema });
+    console.log("Database connection initialized successfully");
+  } catch (error) {
+    console.error("Failed to initialize database connection:", error);
+    db = null;
+    pool = null;
+  }
 }
