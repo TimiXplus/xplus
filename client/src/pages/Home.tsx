@@ -24,10 +24,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col font-sans selection:bg-primary selection:text-white">
       <Navbar />
-      
+
       <main className="flex-grow">
         <Hero />
-        
+
         <div className="space-y-8 pb-20">
           <ProductSection title="Hot Deals" products={hotDeals} icon="🔥" />
           <ProductSection title="Discounts" products={discounts} icon="✨" />

@@ -8,51 +8,60 @@
   --font-display: 'DM Sans', sans-serif;
   --font-sans: 'Inter', sans-serif;
 
-  /* Custom Palette based on requirements */
-  /* Background: #141414 */
-  --background: 0 0% 8%;
+  /* Custom Palette based on Xplus Brand */
+
+  /* Background: Deep Navy Blue from Logo */
+  --background: 227 60% 6%;
   /* Foreground: #F9F9F9 */
   --foreground: 0 0% 98%;
 
-  /* Primary Accent: #0000EE */
-  --primary: 240 100% 47%;
+  /* Primary Accent: Xplus Red */
+  --primary: 358 83% 51%;
   --primary-foreground: 0 0% 100%;
 
-  /* Secondary / Muted Text: #A0A0A0 */
-  --muted: 0 0% 15%;
-  --muted-foreground: 0 0% 63%;
+  /* Secondary / Muted Text */
+  --muted: 223 36% 17%;
+  --muted-foreground: 224 20% 70%;
 
-  /* Input Background: #262626 */
-  --input: 0 0% 15%;
-  
-  /* Cards: Slightly lighter than background #1E1E1E */
-  --card: 0 0% 12%;
+  /* Input Background */
+  --input: 223 36% 17%;
+
+  /* Cards: Slightly lighter Navy Blue */
+  --card: 223 46% 11%;
   --card-foreground: 0 0% 98%;
 
-  --border: 0 0% 20%;
-  
-  --popover: 0 0% 8%;
+  --border: 224 33% 23%;
+
+  --popover: 227 60% 6%;
   --popover-foreground: 0 0% 98%;
 
-  --accent: 0 0% 15%;
+  --accent: 223 36% 17%;
   --accent-foreground: 0 0% 98%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
 
-  --ring: 240 100% 47%;
-  --radius: 2rem; /* 32px heavily rounded preference */
+  --ring: 358 83% 51%;
+  --radius: 2rem;
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground;
     font-family: var(--font-sans);
+    overflow-x: hidden;
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     @apply tracking-tight font-bold;
   }
@@ -62,11 +71,11 @@
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
-  
+
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -75,9 +84,17 @@
 
 /* Custom animations */
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .animate-float {

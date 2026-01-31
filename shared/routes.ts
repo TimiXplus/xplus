@@ -41,3 +41,6 @@ export function buildUrl(path: string, params?: Record<string, string | number>)
   }
   return url;
 }
+
+// Export Product type for use in client components
+export type Product = typeof products.$inferSelect;
