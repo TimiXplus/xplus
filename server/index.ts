@@ -22,6 +22,16 @@ app.use(
 
 app.use(express.urlencoded({ extended: false }));
 
+// Health check route - should always work even if everything else fails
+app.get("/api/health", (_req, res) => {
+  res.json({
+    status: "ok",
+    timestamp: new Date().toISOString(),
+    env: process.env.NODE_ENV,
+    db: !!process.env.DATABASE_URL
+  });
+});
+
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
     hour: "numeric",
@@ -62,19 +72,6 @@ app.use((req, res, next) => {
 const setupPromise = (async () => {
   await registerRoutes(httpServer, app);
 
-  app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
-
-    console.error("Internal Server Error:", err);
-
-    if (res.headersSent) {
-      return next(err);
-    }
-
-    return res.status(status).json({ message });
-  });
-
   if (process.env.NODE_ENV === "production") {
     serveStatic(app);
   } else {
@@ -82,6 +79,23 @@ const setupPromise = (async () => {
     await setupVite(httpServer, app);
   }
 })();
+
+// Global error handler - registered Early and Outside the promise
+app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
+  const status = err.status || err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
+
+  console.error("FATAL ERROR:", err);
+
+  if (res.headersSent) {
+    return next(err);
+  }
+
+  return res.status(status).json({
+    message,
+    stack: process.env.NODE_ENV === "development" ? err.stack : undefined
+  });
+});
 
 // Middleware to ensure setup is complete before handling requests
 app.use(async (req, res, next) => {

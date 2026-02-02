@@ -73,7 +73,7 @@ export default function Profile() {
                                 My Account
                             </h1>
                             <p className="text-muted-foreground">
-                                Welcome back, {user.name}!
+                                Welcome back, {user.username}!
                             </p>
                         </div>
                         <motion.button
@@ -95,7 +95,7 @@ export default function Profile() {
                                         <User className="w-8 h-8 text-primary" />
                                     </div>
                                     <div>
-                                        <h2 className="font-bold text-white text-lg">{user.name}</h2>
+                                        <h2 className="font-bold text-white text-lg">{user.username}</h2>
                                         <p className="text-muted-foreground text-sm">{user.email}</p>
                                     </div>
                                 </div>

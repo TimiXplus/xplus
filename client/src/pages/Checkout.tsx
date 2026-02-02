@@ -50,7 +50,7 @@ export default function Checkout() {
         customer: {
             email: shippingData?.email || user?.email || "",
             phone_number: shippingData?.phone || "",
-            name: shippingData ? `${shippingData.firstName} ${shippingData.lastName}` : user?.name || "",
+            name: shippingData ? `${shippingData.firstName} ${shippingData.lastName}` : user?.username || "",
         },
         customizations: {
             title: "Xplus Commerce",
