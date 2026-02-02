@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { insertProductSchema, products } from './schema';
+import { insertProductSchema, products } from './schema.js';
 
 export const errorSchemas = {
   notFound: z.object({ message: z.string() }),

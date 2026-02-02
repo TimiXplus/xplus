@@ -1,5 +1,5 @@
-import { products, users, reviews, type Product, type InsertProduct, type User, type InsertUser, type Review, type InsertReview } from "@shared/schema";
-import { db } from "./db";
+import { products, users, reviews, type Product, type InsertProduct, type User, type InsertUser, type Review, type InsertReview } from "../shared/schema.js";
+import { db } from "./db.js";
 import { eq, ilike } from "drizzle-orm";
 
 export interface IStorage {
