@@ -69,18 +69,15 @@ app.use((req, res, next) => {
   next();
 });
 
-const setupPromise = (async () => {
-  await registerRoutes(httpServer, app);
+// Register all routes BEFORE the app is used
+// This ensures routes are available when Vercel handles requests
+await registerRoutes(httpServer, app);
 
-  if (process.env.NODE_ENV === "production") {
-    serveStatic(app);
-  } else {
-    const { setupVite } = await import("./vite");
-    await setupVite(httpServer, app);
-  }
-})();
+if (process.env.NODE_ENV === "production" && !process.env.VERCEL) {
+  serveStatic(app);
+}
 
-// Global error handler - registered Early and Outside the promise
+// Global error handler (must be LAST)
 app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
   const status = err.status || err.statusCode || 500;
   const message = err.message || "Internal Server Error";
@@ -95,16 +92,6 @@ app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
     message,
     stack: process.env.NODE_ENV === "development" ? err.stack : undefined
   });
-});
-
-// Middleware to ensure setup is complete before handling requests
-app.use(async (req, res, next) => {
-  try {
-    await setupPromise;
-    next();
-  } catch (err) {
-    next(err);
-  }
 });
 
 if (process.env.NODE_ENV !== "production" || !process.env.VERCEL) {
